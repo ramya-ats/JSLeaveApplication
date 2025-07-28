@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Leave Application System</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .error-message {
+      color: red;
+      font-size: 0.85em;
+      margin-top: 4px;
+      display: block;
+    }
+    body {
+    font-family: Arial, sans-serif;
+    
+}
+
+.main-heading {
+    padding: 20px;
+    font-size: 28px;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+
+}
+
+h2 {
+    text-align: center;
+    padding: 10px;
+}
+
+.container {
+    
+    
+    height: fit-content;
+    padding: 10px;
+    margin: 0px;
+}
+
+
+
+
+.form-container {
+    background-color: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    display:flex;
+    justify-content: center;
+}
+
+
+
+.box-container {
+    background-color: #f5f7fa;
+    border-radius: 15px;
+    border-style: solid;
+    padding: 20px;
+    margin: 18px;
+    border-color: #e4e7eb;
+    border-width: 1px;
+    width: 600px;
+    /* width: 100%;
+    max-width: 600px;
+  min-height: 600px; */
+    min-height: 600px;
+}
+
+
+
+input, textarea {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 550px;
+    /* width: 100%; */
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: -5px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+select {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 565px; 
+}
+
+#reason {
+    resize: none;
+}
+
+button {
+    cursor: pointer;
+    color: white;
+    background-color: #3483eb;
+    border-radius: 8px;
+    padding: 10px 20px;
+    border: none;
+}
+
+/** hr  **/
+
+.container2 {
+    /* max-width: 900px; */
+    margin: auto;
+    background: #fff;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
+    background-color: #3483eb;
+    color: white;
+}
+
+.summary-boxes {
+    
+    padding: 10px 0 20px 0;
+    display: flex;
+    justify-content: space-between;
+    
+    /* margin: 20px; */
+}
+
+.box {
+    flex: 1;
+    margin: 0 10px;
+    background-color: #e9ecef;
+    padding: 20px;
+    border-radius: 7px;
+    text-align: center;
+    font-weight: bold;
+    
+}
+
+.details-container {
+    background-color: #e9ecef;
+    border-radius: 7px;
+    padding: 20px;
+}
+.box span {
+    display: block;
+    margin-top: 10px;
+    
+}
+
+.search-filter {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search-filter input {
+    border: 2px solid black;
+    border-radius: 4px;
+    padding: 8px;
+    flex: 5;
+}
+
+.search-filter select {
+    border: 2px solid black;
+    padding: 8px;
+    flex: 1;
+    border-radius: 4px;
+}
+
+.clear-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+
+}
+
+.no-data {
+    text-align: center;
+    color: #999;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    width: 400px;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 22px;
+    cursor: pointer;
+    color: #666;
+}
+
+.close-btn:hover {
+    color: #000;
+}
+
+
+
+
+
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 4px;
+    display: block;
+  }
+  
+
+/* Show error message when input is invalid */
+input:invalid + .error-message {
+  display: block;
+}
+
+.heading{
+    padding:20px;
+    border-radius: 10px;
+}
+.search-filter {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.search-input {
+    width: 300px; 
+    padding: 6px;
+}
+
+.status-select {
+    width: 120px; 
+    padding: 6px;
+}
+
+.clear-btn {
+    padding: 6px 12px;
+}
+
+
+
+@media (max-width: 768px) {
+  .box-container, .container2 {
+    padding: 10px;
+  }
+
+  .summary-boxes .box {
+    flex: 1 1 100%;
+  }
+
+  button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .modal-content {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-heading, h1.heading {
+    font-size: 20px;
+  }
+
+  input, textarea, select {
+    font-size: 14px;
+  }
+
+  .search-input, .status-select, .clear-btn {
+    width: 100%;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="main-heading">Leave Application</h1>
+    <div class="form-container">
+      <form class="box-container" id="employeeForm">
+       
+
+        <!-- Employee Name -->
+        <div class="form-group">
+          <label for="employeeName">Employee Name</label>
+          <input
+          type="text"
+          id="employeeName"
+          name="employeeName"
+          placeholder="Enter employee name"
+        />
+        
+          <span class="error-message" id="error-message"></span>
+        </div>
+
+        <!-- Employee ID -->
+        <div class="form-group" style="position: relative; max-width: 220px;">
+            <label for="employeeId">Employee ID</label>
+            <input
+              type="text"
+              id="employeeId"
+              class="employeeId"
+              name="employeeId"
+              placeholder="Enter Employee ID"
+              
+            
+            />
+            
+            <span class="error-message" id="employeeId-error"></span>
+          </div>
+          
+          
+
+        <!-- Leave Start Date -->
+        <div class="form-group">
+          <label for="startDate">Leave Start Date</label>
+          <input type="date" id="startDate" />
+          <span class="error-message" id="startDate-error"></span>
+        </div>
+
+        <!-- Leave End Date -->
+        <div class="form-group">
+          <label for="endDate">Leave End Date</label>
+          <input type="date" id="endDate" />
+          <span class="error-message" id="endDate-error"></span>
+        </div>
+
+        <!-- Leave Type -->
+        <div class="form-group">
+          <label for="leaveType">Leave Type</label>
+          <select id="leaveType">
+            <option value="">-- Select Leave Type</option>
+            <option>Sick Leave</option>
+            <option>Casual Leave</option>
+            <option>Unplanned Leave</option>
+            <option>Maternity Leave</option>
+          </select>
+          <span class="error-message" id="leaveType-error"></span>
+        </div>
+
+        <!-- Reason for the Leave -->
+        <div class="form-group">
+          <label for="reason">Reason</label>
+          <textarea id="reason" placeholder="Reason for the leave" rows="4"></textarea>
+          <span class="error-message" id="reason-error"></span>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group">
+          <button type="submit">Submit Request</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("employeeForm");
+
+  const employeeNameInput = document.getElementById("employeeName");
+  const employeeIdInput = document.getElementById("employeeId");
+  const startDateInput = document.getElementById("startDate");
+  const endDateInput = document.getElementById("endDate");
+  const leaveTypeInput = document.getElementById("leaveType");
+  const reasonInput = document.getElementById("reason");
+
+  const nameError = document.getElementById("error-message");
+  const idError = document.getElementById("employeeId-error");
+  const startDateError = document.getElementById("startDate-error");
+  const endDateError = document.getElementById("endDate-error");
+  const leaveTypeError = document.getElementById("leaveType-error");
+  const reasonError = document.getElementById("reason-error");
+
+  const namePattern = /^[A-Za-z ]{5,30}$/;
+  const idPattern = /^ATS(?!0000)\d{4}$/;
+
+  const today = new Date().toISOString().split("T")[0];
+  startDateInput.setAttribute("min", today);
+  endDateInput.setAttribute("min", today);
+
+  // Employee Name Validation
+  employeeNameInput.addEventListener("input", () => {
+    employeeNameInput.value = employeeNameInput.value.replace(/[^A-Za-z ]/g, "");
+
+    if (employeeNameInput.value.length > 30) {
+      employeeNameInput.value = employeeNameInput.value.slice(0, 30);
+      nameError.textContent = "Maximum 30 characters allowed.";
+      employeeNameInput.classList.add("input-error");
+    } else if (employeeNameInput.value.length < 5) {
+      nameError.textContent = "Minimum 5 characters required.";
+      employeeNameInput.classList.add("input-error");
+    } else {
+      nameError.textContent = "";
+      employeeNameInput.classList.remove("input-error");
+    }
+  });
+
+  // Employee ID Validation
+  employeeIdInput.addEventListener("input", () => {
+    let val = employeeIdInput.value.toUpperCase();
+
+    if (!val.startsWith("ATS")) {
+      const index = val.indexOf("ATS");
+      val = index !== -1 ? val.slice(index) : "ATS";
+    }
+
+    let digits = val.slice(3).replace(/\D/g, "").slice(0, 4);
+    employeeIdInput.value = "ATS" + digits;
+
+    if (employeeIdInput.value.length !== 7) {
+      idError.textContent = "Employee ID must be exactly 7 characters.";
+      employeeIdInput.classList.add("input-error");
+    } else if (!idPattern.test(employeeIdInput.value)) {
+      idError.textContent = "ID must start with 'ATS' and not be ATS0000.";
+      employeeIdInput.classList.add("input-error");
+    } else {
+      idError.textContent = "";
+      employeeIdInput.classList.remove("input-error");
+    }
+  });
+
+  // Start Date & End Date Logic
+  startDateInput.addEventListener("input", () => {
+    const startDateValue = startDateInput.value;
+    if (!startDateValue) {
+      startDateError.textContent = "Please select a start date.";
+      startDateInput.classList.add("input-error");
+      return;
+    }
+
+    const startDate = new Date(startDateValue);
+    const maxEndDate = new Date(startDate);
+    maxEndDate.setFullYear(startDate.getFullYear() + 2);
+
+    endDateInput.setAttribute("min", startDateValue);
+    endDateInput.setAttribute("max", maxEndDate.toISOString().split("T")[0]);
+
+    startDateError.textContent = "";
+    startDateInput.classList.remove("input-error");
+
+    const endDate = new Date(endDateInput.value);
+    if (endDateInput.value && (endDate < startDate || endDate > maxEndDate)) {
+      endDateError.textContent = "End date must be within 2 years from start.";
+      endDateInput.classList.add("input-error");
+    } else {
+      endDateError.textContent = "";
+      endDateInput.classList.remove("input-error");
+    }
+  });
+
+  endDateInput.addEventListener("input", () => {
+    const startDate = new Date(startDateInput.value);
+    const endDate = new Date(endDateInput.value);
+    const maxEndDate = new Date(startDate);
+    maxEndDate.setFullYear(startDate.getFullYear() + 2);
+
+    if (!endDateInput.value) {
+      endDateError.textContent = "Please select an end date.";
+      endDateInput.classList.add("input-error");
+    } else if (endDate < startDate || endDate > maxEndDate) {
+      endDateError.textContent = "End date must be within 2 years from start.";
+      endDateInput.classList.add("input-error");
+    } else {
+      endDateError.textContent = "";
+      endDateInput.classList.remove("input-error");
+    }
+  });
+
+  // Leave Type
+  leaveTypeInput.addEventListener("input", () => {
+    if (!leaveTypeInput.value) {
+      leaveTypeError.textContent = "Please select a leave type.";
+      leaveTypeInput.classList.add("input-error");
+    } else {
+      leaveTypeError.textContent = "";
+      leaveTypeInput.classList.remove("input-error");
+    }
+  });
+
+  // Reason Validation (non-space characters only)
+  reasonInput.addEventListener("input", () => {
+    const raw = reasonInput.value;
+    const nonSpaceLength = raw.replace(/\s/g, "").length;
+
+    if (nonSpaceLength > 300) {
+      // Keep trimming until under 300 non-space characters
+      let trimmed = "";
+      let count = 0;
+      for (let i = 0; i < raw.length; i++) {
+        if (raw[i] !== " ") count++;
+        if (count > 300) break;
+        trimmed += raw[i];
+      }
+      reasonInput.value = trimmed;
+      reasonError.textContent = "Maximum 300 non-space characters allowed.";
+      reasonInput.classList.add("input-error");
+    } else if (nonSpaceLength < 5) {
+      reasonError.textContent = "Minimum 5 non-space characters required.";
+      reasonInput.classList.add("input-error");
+    } else {
+      reasonError.textContent = "";
+      reasonInput.classList.remove("input-error");
+    }
+  });
+
+  // Form Submission
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    let hasError = false;
+
+    const nameValue = employeeNameInput.value.trim();
+    const idValue = employeeIdInput.value.trim();
+    const startDateValue = startDateInput.value;
+    const endDateValue = endDateInput.value;
+    const leaveTypeValue = leaveTypeInput.value;
+    const reasonValue = reasonInput.value.trim();
+    const reasonNonSpaceLength = reasonValue.replace(/\s/g, "").length;
+
+    if (!namePattern.test(nameValue)) {
+      nameError.textContent = "Name must be 5–30 letters/spaces.";
+      employeeNameInput.classList.add("input-error");
+      hasError = true;
+    }
+
+    if (!idPattern.test(idValue) || idValue.length !== 7) {
+      idError.textContent = "ID must be ATS + 4 digits (not ATS0000).";
+      employeeIdInput.classList.add("input-error");
+      hasError = true;
+    }
+
+    if (!startDateValue) {
+      startDateError.textContent = "Start date required.";
+      startDateInput.classList.add("input-error");
+      hasError = true;
+    }
+
+    if (!endDateValue) {
+      endDateError.textContent = "End date required.";
+      endDateInput.classList.add("input-error");
+      hasError = true;
+    } else {
+      const start = new Date(startDateValue);
+      const end = new Date(endDateValue);
+      const maxEnd = new Date(start);
+      maxEnd.setFullYear(start.getFullYear() + 2);
+      if (end < start || end > maxEnd) {
+        endDateError.textContent = "End date must be within 2 years from start.";
+        endDateInput.classList.add("input-error");
+        hasError = true;
+      }
+    }
+
+    if (!leaveTypeValue) {
+      leaveTypeError.textContent = "Select a leave type.";
+      leaveTypeInput.classList.add("input-error");
+      hasError = true;
+    }
+
+    if (reasonNonSpaceLength < 5 || reasonNonSpaceLength > 300) {
+      reasonError.textContent = "Reason must be 5–300 non-space characters.";
+      reasonInput.classList.add("input-error");
+      hasError = true;
+    }
+
+    if (hasError) return;
+
+    // Save valid form
+    const leaveApplication = {
+      employeeName: nameValue,
+      employeeId: idValue,
+      startDate: startDateValue,
+      endDate: endDateValue,
+      leaveType: leaveTypeValue,
+      reason: reasonValue,
+      status: "Pending",
+    };
+
+    const applications = JSON.parse(localStorage.getItem("leaveApplications")) || [];
+    applications.push(leaveApplication);
+    localStorage.setItem("leaveApplications", JSON.stringify(applications));
+
+    alert("Leave request submitted successfully!");
+    form.reset();
+
+    [nameError, idError, startDateError, endDateError, leaveTypeError, reasonError].forEach(e => e.textContent = '');
+    [employeeNameInput, employeeIdInput, startDateInput, endDateInput, leaveTypeInput, reasonInput]
+      .forEach(input => input.classList.remove("input-error"));
+  });
+});</script>
+</body>
+</html>

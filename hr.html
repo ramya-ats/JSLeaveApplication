@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>HR Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+    
+</head>
+<body>
+    
+    <div class="container2">
+        
+        <h1 class="heading" >HR Leave Request</h1>
+
+        <div class="summary-boxes">
+            <div class="box" style="border-left: 4px solid green; border-right: 4px solid green;">Total Requests <br><span>0</span></div>
+            <div class="box" style="border-left: 4px solid blueviolet; border-right: 4px solid blueviolet;">Pending <br><span>0</span></div>
+            <div class="box" style="border-left: 4px solid orange; border-right: 4px solid orange;">Approved <br><span>0</span></div>
+            <div class="box" style="border-left: 4px solid red; border-right: 4px solid red;">Rejected <br><span>0</span></div>
+        </div>
+
+        <div class="details-container">
+            <div class="search-filter">
+             
+             <input type="text" id="searchInput" class="search-input" placeholder="Search by Employee ID, Name ....">
+                
+          <select id="statusFilter" class="status-select">
+                    <option value="All">All</option>
+                    <option>Approved</option>
+                    <option>Pending</option>
+                    <option>Rejected</option>
+                </select>
+           
+                <button class="clear-btn">Clear Records</button>
+            </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Employee ID</th>
+                    <th>Employee Name</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        </div>
+    </div>
+
+    <!-- Modal for View Details -->
+     <div id="employeeModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">×</span>
+            <h2>Leave Request Details</h2>
+            <div id="modalDetails"></div>
+            <div style="margin-top: 20px;">
+                <button id="approveBtn" style="color: white; background-color: green;">Approve</button>
+                <button id="rejectBtn" style="color: white; background-color: red;">Reject</button>
+            </div>
+        </div>
+    </div>
+</div>
+    <script src="hr.js" defer></script>
+</body>
+</html>

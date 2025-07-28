@@ -1,0 +1,297 @@
+body {
+    font-family: Arial, sans-serif;
+    
+}
+
+.main-heading {
+    padding: 20px;
+    font-size: 28px;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+
+}
+
+h2 {
+    text-align: center;
+    padding: 10px;
+}
+
+.container {
+    
+    
+    height: fit-content;
+    padding: 10px;
+    margin: 0px;
+}
+
+
+
+
+.form-container {
+    background-color: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    display:flex;
+    justify-content: center;
+}
+
+
+
+.box-container {
+    background-color: #f5f7fa;
+    border-radius: 15px;
+    border-style: solid;
+    padding: 20px;
+    margin: 18px;
+    border-color: #e4e7eb;
+    border-width: 1px;
+    width: 600px;
+    /* width: 100%;
+    max-width: 600px;
+  min-height: 600px; */
+    min-height: 600px;
+}
+
+
+
+input, textarea {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 550px;
+    /* width: 100%; */
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: -5px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+select {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 565px; 
+}
+
+#reason {
+    resize: none;
+}
+
+button {
+    cursor: pointer;
+    color: white;
+    background-color: #3483eb;
+    border-radius: 8px;
+    padding: 10px 20px;
+    border: none;
+}
+
+/** hr  **/
+
+.container2 {
+    /* max-width: 900px; */
+    margin: auto;
+    background: #fff;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
+    background-color: #3483eb;
+    color: white;
+}
+
+.summary-boxes {
+    
+    padding: 10px 0 20px 0;
+    display: flex;
+    justify-content: space-between;
+    
+    /* margin: 20px; */
+}
+
+.box {
+    flex: 1;
+    margin: 0 10px;
+    background-color: #e9ecef;
+    padding: 20px;
+    border-radius: 7px;
+    text-align: center;
+    font-weight: bold;
+    
+}
+
+.details-container {
+    background-color: #e9ecef;
+    border-radius: 7px;
+    padding: 20px;
+}
+.box span {
+    display: block;
+    margin-top: 10px;
+    
+}
+
+.search-filter {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search-filter input {
+    border: 2px solid black;
+    border-radius: 4px;
+    padding: 8px;
+    flex: 5;
+}
+
+.search-filter select {
+    border: 2px solid black;
+    padding: 8px;
+    flex: 1;
+    border-radius: 4px;
+}
+
+.clear-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+
+}
+
+.no-data {
+    text-align: center;
+    color: #999;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    width: 400px;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 22px;
+    cursor: pointer;
+    color: #666;
+}
+
+.close-btn:hover {
+    color: #000;
+}
+
+
+
+
+
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 4px;
+    display: block;
+  }
+  
+
+/* Show error message when input is invalid */
+input:invalid + .error-message {
+  display: block;
+}
+
+.heading{
+    padding:20px;
+    border-radius: 10px;
+}
+.search-filter {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.search-input {
+    width: 300px; 
+    padding: 6px;
+}
+
+.status-select {
+    width: 120px; 
+    padding: 6px;
+}
+
+.clear-btn {
+    padding: 6px 12px;
+}
+
+
+
+@media (max-width: 768px) {
+  .box-container, .container2 {
+    padding: 10px;
+  }
+
+  .summary-boxes .box {
+    flex: 1 1 100%;
+  }
+
+  button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .modal-content {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-heading, h1.heading {
+    font-size: 20px;
+  }
+
+  input, textarea, select {
+    font-size: 14px;
+  }
+
+  .search-input, .status-select, .clear-btn {
+    width: 100%;
+  }
+}

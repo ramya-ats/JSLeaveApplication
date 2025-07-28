@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Leave Application System</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .error-message {
+      color: red;
+      font-size: 0.85em;
+      margin-top: 4px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="main-heading">Leave Application</h1>
+    <div class="form-container">
+      <form class="box-container" id="employeeForm">
+       
+
+        <!-- Employee Name -->
+        <div class="form-group">
+          <label for="employeeName">Employee Name</label>
+          <input
+          type="text"
+          id="employeeName"
+          name="employeeName"
+          placeholder="Enter employee name"
+        />
+        
+          <span class="error-message" id="error-message"></span>
+        </div>
+
+        <!-- Employee ID -->
+        <div class="form-group" style="position: relative; max-width: 220px;">
+            <label for="employeeId">Employee ID</label>
+            <input
+              type="text"
+              id="employeeId"
+              class="employeeId"
+              name="employeeId"
+              placeholder="Enter Employee ID"
+              
+            
+            />
+            
+            <span class="error-message" id="employeeId-error"></span>
+          </div>
+          
+          
+
+        <!-- Leave Start Date -->
+        <div class="form-group">
+          <label for="startDate">Leave Start Date</label>
+          <input type="date" id="startDate" />
+          <span class="error-message" id="startDate-error"></span>
+        </div>
+
+        <!-- Leave End Date -->
+        <div class="form-group">
+          <label for="endDate">Leave End Date</label>
+          <input type="date" id="endDate" />
+          <span class="error-message" id="endDate-error"></span>
+        </div>
+
+        <!-- Leave Type -->
+        <div class="form-group">
+          <label for="leaveType">Leave Type</label>
+          <select id="leaveType">
+            <option value="">-- Select Leave Type</option>
+            <option>Sick Leave</option>
+            <option>Casual Leave</option>
+            <option>Unplanned Leave</option>
+            <option>Maternity Leave</option>
+          </select>
+          <span class="error-message" id="leaveType-error"></span>
+        </div>
+
+        <!-- Reason for the Leave -->
+        <div class="form-group">
+          <label for="reason">Reason</label>
+          <textarea id="reason" placeholder="Reason for the leave" rows="4"></textarea>
+          <span class="error-message" id="reason-error"></span>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group">
+          <button type="submit">Submit Request</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
