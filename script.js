@@ -22,10 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
   startDateInput.setAttribute("min", today);
   endDateInput.setAttribute("min", today);
 
-  // Employee Name Validation
   employeeNameInput.addEventListener("input", () => {
     employeeNameInput.value = employeeNameInput.value.replace(/[^A-Za-z ]/g, "");
-
     if (employeeNameInput.value.length > 30) {
       employeeNameInput.value = employeeNameInput.value.slice(0, 30);
       nameError.textContent = "Maximum 30 characters allowed.";
@@ -39,15 +37,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Employee ID Validation
   employeeIdInput.addEventListener("input", () => {
     let val = employeeIdInput.value.toUpperCase();
-
     if (!val.startsWith("ATS")) {
       const index = val.indexOf("ATS");
       val = index !== -1 ? val.slice(index) : "ATS";
     }
-
     let digits = val.slice(3).replace(/\D/g, "").slice(0, 4);
     employeeIdInput.value = "ATS" + digits;
 
@@ -63,7 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Start Date & End Date Logic
   startDateInput.addEventListener("input", () => {
     const startDateValue = startDateInput.value;
     if (!startDateValue) {
@@ -110,7 +104,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Leave Type
   leaveTypeInput.addEventListener("input", () => {
     if (!leaveTypeInput.value) {
       leaveTypeError.textContent = "Please select a leave type.";
@@ -121,13 +114,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Reason Validation (non-space characters only)
   reasonInput.addEventListener("input", () => {
     const raw = reasonInput.value;
     const nonSpaceLength = raw.replace(/\s/g, "").length;
 
     if (nonSpaceLength > 300) {
-      // Keep trimming until under 300 non-space characters
       let trimmed = "";
       let count = 0;
       for (let i = 0; i < raw.length; i++) {
@@ -147,7 +138,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Form Submission
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     let hasError = false;
@@ -208,7 +198,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (hasError) return;
 
-    // Save valid form
     const leaveApplication = {
       employeeName: nameValue,
       employeeId: idValue,
@@ -216,18 +205,35 @@ document.addEventListener("DOMContentLoaded", () => {
       endDate: endDateValue,
       leaveType: leaveTypeValue,
       reason: reasonValue,
-      status: "Pending",
     };
 
-    const applications = JSON.parse(localStorage.getItem("leaveApplications")) || [];
-    applications.push(leaveApplication);
-    localStorage.setItem("leaveApplications", JSON.stringify(applications));
-
-    alert("Leave request submitted successfully!");
-    form.reset();
-
-    [nameError, idError, startDateError, endDateError, leaveTypeError, reasonError].forEach(e => e.textContent = '');
-    [employeeNameInput, employeeIdInput, startDateInput, endDateInput, leaveTypeInput, reasonInput]
-      .forEach(input => input.classList.remove("input-error"));
+    fetch('http://localhost:5000/api/leave', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(leaveApplication),
+    })
+      .then(async response => {
+        if (!response.ok) {
+          let errorMsg = 'Submission failed';
+          try {
+            const errorData = await response.json();
+            if (errorData.message) errorMsg = errorData.message;
+          } catch {}
+          throw new Error(errorMsg);
+        }
+        return response.json();
+      })
+      .then(data => {
+        alert(data.message);
+        form.reset();
+        [nameError, idError, startDateError, endDateError, leaveTypeError, reasonError].forEach(e => e.textContent = '');
+        [employeeNameInput, employeeIdInput, startDateInput, endDateInput, leaveTypeInput, reasonInput].forEach(i => i.classList.remove("input-error"));
+      })
+      .catch(error => {
+        console.error("Error submitting form:", error);
+        alert("Error: " + error.message);
+      });
   });
 });
